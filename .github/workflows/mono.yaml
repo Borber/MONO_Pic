@@ -1,4 +1,4 @@
-name: MONO everyday
+name: MONO everyday beta
 
 on:
     schedule:
@@ -14,25 +14,24 @@ jobs:
             with:
                 ref: master
 
-        -   name: Set up Python 2.7.17
+        -   name: Set up Python 3.9
             uses: actions/setup-python@v1
             with:
-                python-version: 2.7.17
+                python-version: 3.9.6
 
         -   name: Download MONO
             run: |
-                cd MONO_Pic
                 pip install -r requirements.txt
                 python ./main.py
 
-        -   name: commit
-            run: | 
-                git config --global user.email borber.drum@gmail.com
-                git config --global user.name BORBER
-                git add .
-                git commit -m "update" -a
+        -   name: Add & Commit
+            uses: EndBug/add-and-commit@v7.2.1
+            with:
+                author_name: borber
+                author_email: borber.drum@gmail.com
 
         -   name: Push changes
             uses: ad-m/github-push-action@master
             with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
+                branch: master
