@@ -25,12 +25,11 @@ jobs:
                 pip install -r requirements.txt
                 python ./main.py
 
-        -   name: commit
-            run: | 
-                git config --global user.email borber.drum@gmail.com
-                git config --global user.name BORBER
-                git add .
-                git commit -m "update" -a
+        -   name: Add & Commit
+            uses: EndBug/add-and-commit@v7.2.1
+            with:
+                author_name: borber
+                author_email: borber.drum@gmail.com
 
         -   name: Push changes
             uses: ad-m/github-push-action@master
