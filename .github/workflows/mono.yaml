@@ -1,4 +1,4 @@
-name: MONO everyday beta
+name: MONO everyday
 
 on:
     schedule:
