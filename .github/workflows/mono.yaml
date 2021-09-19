@@ -15,7 +15,7 @@ jobs:
                 ref: master
 
         -   name: Set up Python
-            uses: aactions/setup-python@v2.2.2
+            uses: actions/setup-python@v2.2.2
 
         -   name: Download MONO
             run: |
